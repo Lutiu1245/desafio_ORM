@@ -20,12 +20,17 @@ public class Atividade {
     @JoinColumn(name = "partipante_id")
     private Participantes participante;
 
-    public Atividade(Long id, String name, String description, Double price, Participantes participante) {
+    @ManyToOne
+    @JoinColumn(name = "categoria_id")
+    private Categoria categoria;
+
+    public Atividade(Long id, String name, String description, Double price, Participantes participante, Categoria categoria) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.price = price;
         this.participante = participante;
+        this.categoria = categoria;
     }
 
     public Long getId() {
@@ -58,6 +63,14 @@ public class Atividade {
 
     public void setPrice(Double price) {
         this.price = price;
+    }
+
+    public Categoria getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
     }
 
     @Override

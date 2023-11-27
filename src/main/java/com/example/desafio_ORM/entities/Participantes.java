@@ -16,7 +16,7 @@ public class Participantes {
     @Column(unique = true)
     private String email;
 
-    @OneToMany(mappedBy = "participantes")
+    @OneToMany(mappedBy = "participante")
     private List<Atividade> atividades = new ArrayList<>();
 
     public Participantes(Long id, String name, String email) {
