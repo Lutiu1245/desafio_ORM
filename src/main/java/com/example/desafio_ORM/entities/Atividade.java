@@ -24,13 +24,17 @@ public class Atividade {
     @JoinColumn(name = "categoria_id")
     private Categoria categoria;
 
-    public Atividade(Long id, String name, String description, Double price, Participantes participante, Categoria categoria) {
+    @OneToMany(mappedBy = "atividade")
+    private List<Bloco> blocos = new ArrayList<>();
+
+    public Atividade(Long id, String name, String description, Double price, Participantes participante, Categoria categoria, List<Bloco> blocos) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.price = price;
         this.participante = participante;
         this.categoria = categoria;
+        this.blocos = blocos;
     }
 
     public Long getId() {
@@ -71,6 +75,22 @@ public class Atividade {
 
     public void setCategoria(Categoria categoria) {
         this.categoria = categoria;
+    }
+
+    public Participantes getParticipante() {
+        return participante;
+    }
+
+    public void setParticipante(Participantes participante) {
+        this.participante = participante;
+    }
+
+    public List<Bloco> getBlocos() {
+        return blocos;
+    }
+
+    public void setBlocos(List<Bloco> blocos) {
+        this.blocos = blocos;
     }
 
     @Override
