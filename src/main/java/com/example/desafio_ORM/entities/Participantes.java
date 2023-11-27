@@ -2,6 +2,8 @@ package com.example.desafio_ORM.entities;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -13,6 +15,9 @@ public class Participantes {
     private String name;
     @Column(unique = true)
     private String email;
+
+    @OneToMany(mappedBy = "participantes")
+    private List<Atividade> atividades = new ArrayList<>();
 
     public Participantes(Long id, String name, String email) {
         this.id = id;
